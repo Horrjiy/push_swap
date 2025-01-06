@@ -6,17 +6,17 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/01/03 17:57:13 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/01/06 19:33:02 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME 	:= push_swap
-LIBMLX	= ./MLX42
 
-CFILES 	= src/error.c src/main.c \
-		src/s_swap.c 
+CFILES 	:= src/error.c src/_main_push_swap.c \
+		src/s_swap.c src/p_push.c src/r_rotate.c src/rr_revrot.c
 			
-OFILES 	= $(CFILES:.c=.o)
+OFILES := 	$(CFILES:.c=.o)
+DFILES :=	$(CFILES:.c=.d)
 
 CFLAGS = -Wall -Wextra -Werror
 
@@ -27,7 +27,9 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@make all -C libft
-	@cc $(CFILES) libft/libft.a $(NAME) 
+	@cc $(CFILES) libft/libft.a $(NAME)
+	@mkdir O_D_FILES
+	 
 	@echo "\033[1;32mCREATE PROGRAM: push_swap\033[0m"
 
 clean:

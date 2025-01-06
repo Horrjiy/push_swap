@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   initstacks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 16:25:52 by mpoplow          ###   ########.fr       */
+/*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/01/05 18:39:41 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	main(int argc, char *argv[])
-{
-	
-}
+#include "../includes/push_swap.h"
 
+t_list	*ft_init_a(int argc, char *argv[], t_list *a)
+{
+}

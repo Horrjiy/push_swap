@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/18 20:33:43 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/10/18 21:42:33 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/06 18:31:44 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,6 @@ int	ft_atoi(const char *str)
 
 // #include <stdio.h>
 // #include <stdlib.h>
-
 // int	main(void)
 // {
 // 	printf("%d; %d\n", ft_atoi("3"), atoi("3"));

@@ -6,7 +6,8 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:02:28 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 18:02:29 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/05 17:29:45 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "../includes/push_swap.h"

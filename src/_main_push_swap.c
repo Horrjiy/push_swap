@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcat.c                                       :+:      :+:    :+:   */
+/*   _main_push_swap.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/16 17:44:49 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 15:30:19 by mpoplow          ###   ########.fr       */
+/*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/01/06 19:33:54 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../includes/push_swap.h"
 
-size_t	ft_strlcat(char *dest, const char *src, size_t destsize)
+int	main(int argc, char *argv[])
 {
-	size_t	i;
-	size_t	slen;
-	size_t	dlen;
-
-	dlen = ft_strlen(dest);
-	slen = ft_strlen(src);
+	t_list	*a;
+	t_data	data;
+	int i;
+	data.arglist = ft_arg_convert(argc, argv);
 	i = 0;
-	if (destsize == 0 || (destsize <= dlen))
-		return (destsize + slen);
-	while (i < ((destsize - dlen) - 1) && src[i])
-	{
-		dest[dlen + i] = src[i];
-		i++;
-	}
-	dest[dlen + i] = '\0';
-	return (dlen + slen);
+	// while ()
+	// {
+	// 	a = ft_init_a(argc, argv, a);
+	// }
 }
+
+
