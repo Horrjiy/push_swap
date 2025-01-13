@@ -6,12 +6,13 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/05 18:39:41 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/13 16:24:57 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-t_list	*ft_init_a(int argc, char *argv[], t_list *a)
-{
-}
+// t_list	*ft_init_a(int i, t_data *data, t_list *a)
+// {
+	
+// }

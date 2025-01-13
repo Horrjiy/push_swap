@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/12 12:31:31 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/13 15:14:36 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,6 @@ static void	ft_argc_check(int argc, char *argv[])
 		ft_error(NULL, NULL);
 	else if (argc == 2)
 	{
-		ft_printf("%d", ft_atoi_strict(argv[1], NULL));
 		exit(0);
 	}
 	else
@@ -63,7 +62,6 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data)
 	while (i <= (argc - 2))
 	{
 		data->arglist[i] = ft_atoi_strict(argv[i + 1], data);
-		ft_printf("Zahl%d: %d\n", i, data->arglist[i]);
 		i++;
 	}
 }
