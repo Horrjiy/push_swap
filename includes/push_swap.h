@@ -18,6 +18,9 @@ typedef struct s_data
 void				ft_error(t_data *data, t_list *a);
 void				free_data(t_data *data);
 void				ft_arg_convert(int argc, char *argv[], t_data *data);
-// t_list				*ft_init_a(int i, t_data data, t_list *a);
+t_list				*ft_init_node(int i, t_data *data, t_list *a);
+int					ft_listlen(t_list *a);
+t_list				*ft_lastnode(t_list *a);
+void				ft_node_addback(t_list **a, t_list *node);
 
 #endif

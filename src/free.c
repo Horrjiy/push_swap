@@ -6,18 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/08 17:19:26 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/09 12:54:02 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:06:54 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
-
-void free_data(t_data *data)
-{
-	free(data->arglist);
-}
-
-// free_list()
-// {
-	
-// }

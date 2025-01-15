@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/13 15:14:36 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/15 16:43:01 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,14 +38,10 @@ static int	ft_atoi_strict(const char *str, t_data *data)
 }
 
 //checks if there is an argument input and handles the one argument case
-static void	ft_argc_check(int argc, char *argv[])
+static void	ft_argc_check(int argc)
 {
-	if (argc <= 1)
-		ft_error(NULL, NULL);
-	else if (argc == 2)
-	{
+	if (argc <= 2)
 		exit(0);
-	}
 	else
 		return ;
 }
@@ -54,7 +50,7 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data)
 {
 	int	i;
 
-	ft_argc_check(argc, argv);
+	ft_argc_check(argc);
 	data->arglist = malloc((argc - 1) * sizeof(int));
 	if (!data->arglist)
 		ft_error(data, NULL);

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/15 12:49:12 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/15 17:49:19 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,32 +14,16 @@
 
 int	main(int argc, char *argv[])
 {
-	t_list	*list;
-	t_list	*temp;
 	t_data	data;
+	t_list	*a;
 	int		i;
 
 	ft_arg_convert(argc, argv, &data);
-	list = ft_init_node(0, &data, list);
+	a = ft_init_node(0, &data, NULL);
 	i = 1;
 	while (i < (argc - 1))
 	{
-		list->next = ft_init_node(i, &data, list);
-		temp = list;
-		list = list->next;
-		list->back = temp;
+		ft_node_addback(&a, ft_init_node(i, &data, a));
 		i++;
 	}
-}
-
-t_list	*ft_init_node(int i, t_data *data, t_list *list)
-{
-	t_list	*node;
-
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		ft_error(&data, list);
-	node->num = data->arglist[i];
-	node->next = NULL;
-	node->back = NULL;
 }

@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/01/12 12:25:01 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/01/15 17:16:51 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,10 +16,11 @@ NAME	:= push_swap
 # 	FILES																		#
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 
-CFILES	:= src/_main_push_swap.c \
-		src/error.c src/free.c \
-		src/argv_convert.c \
-		src/s_swap.c src/p_push.c src/r_rotate.c src/rr_revrot.c
+CFILES	:= $(addprefix src/, \
+		_main_push_swap.c \
+		error_free.c \
+		argv_convert.c list_ft.c\
+		s_swap.c p_push.c r_rotate.c rr_revrotate.c )
 
 OFILES	= $(CFILES:.c=.o)
 DFILES	= $(CFILES:.c=.d)

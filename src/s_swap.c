@@ -6,8 +6,14 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 14:47:38 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/05 17:29:47 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/15 17:55:26 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void ft_sa(t_data *data, t_list *a)
+{
+	if()
+	ft_printf("sa\n");
+}
