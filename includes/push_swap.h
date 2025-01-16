@@ -12,6 +12,7 @@ typedef struct s_list
 
 typedef struct s_data
 {
+	int				*dup_check;
 	int				*arglist;
 }					t_data;
 
@@ -22,5 +23,6 @@ t_list				*ft_init_node(int i, t_data *data, t_list *a);
 int					ft_listlen(t_list *a);
 t_list				*ft_lastnode(t_list *a);
 void				ft_node_addback(t_list **a, t_list *node);
+void				ft_sa_sb(t_list *list, int operation);
 
 #endif

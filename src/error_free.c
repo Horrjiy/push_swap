@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:33:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/15 16:07:06 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/16 13:04:58 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,15 @@
 
 void ft_error(t_data *data, t_list *a)
 {
-	ft_printf("Error\n");
-	exit(69);
+	write(2, "Error\n", 6);
+	exit(2);
 	free_data(data);
 	(void)a;
 }
               
-void free_data(t_data *data)
+void ft_free_data(t_data *data)
 {
 	free(data->arglist);
+	free(data->dup_check);
 }
+
