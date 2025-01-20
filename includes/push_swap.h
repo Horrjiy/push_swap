@@ -22,10 +22,10 @@ t_list				*ft_init_node(int i, t_data *data, t_list *a);
 int					ft_listlen(t_list *a);
 t_list				*ft_lastnode(t_list *a);
 void				ft_node_addback(t_list **a, t_list *node);
-void				ft_sa(t_list *a);
-void				ft_sb(t_list *b);
-void				ft_ss(t_list *a, t_list *b);
-void				ft_pa(t_list *a, t_list *b);
-void				ft_pb(t_list *a, t_list *b);
+void				ft_sa(t_list **a);
+void				ft_sb(t_list **b);
+void				ft_ss(t_list **a, t_list **b);
+void				ft_pa(t_list **a, t_list **b);
+void				ft_pb(t_list **a, t_list **b);
 
 #endif

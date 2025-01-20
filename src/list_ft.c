@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/19 19:44:25 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/20 15:56:50 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int	ft_listlen(t_list *a)
 	t_list	*temp;
 	int		i;
 
-	temp = a;
-	if (!temp)
+	if (!a)
 		return (0);
-	i = 0;
+	temp = a;
+	i = 1;
 	while (temp->next != NULL)
 	{
 		temp = temp->next;
@@ -55,7 +55,7 @@ t_list	*ft_lastnode(t_list *a)
 
 void	ft_node_addback(t_list **a, t_list *node)
 {
-	t_list *temp;
+	t_list	*temp;
 
 	if (!node)
 		return ;
