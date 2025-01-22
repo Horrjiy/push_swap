@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/22 17:31:50 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/22 18:51:05 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,17 +41,15 @@ static int	ft_atoi_strict(const char *str, t_data *data)
 void	ft_argvstring(char *str, t_data *data)
 {
 	int	i;
-	ft_printf("str: %s\n", str);
-	data->source = ft_split(str, '\n');
+
+	data->source = ft_split(str, ' ');
 	if (!data->source)
 		ft_error(data, NULL);
-	ft_printf("data[0]: %s\n", data->source[0]);
 	i = 0;
 	while (data->source[i])
 	{
 		i++;
 	}
-	ft_printf("i: %d\n", i);
 	if (i < 1)
 		ft_error(data, NULL);
 }
