@@ -13,6 +13,7 @@ typedef struct s_data
 {
 	int				*dup_check;
 	int				*arglist;
+	char			**source;
 }					t_data;
 
 void				ft_error(t_data *data, t_list *a);

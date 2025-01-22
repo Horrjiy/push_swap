@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/16 20:02:39 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/22 17:31:50 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,37 @@ static int	ft_atoi_strict(const char *str, t_data *data)
 	return (ft_atoi(str));
 }
 
-//checks if there is an argument input and handles the one argument case
-static void	ft_argc_check(int argc)
+//converts the one argumument case input to a **char
+void	ft_argvstring(char *str, t_data *data)
 {
-	if (argc <= 2)
+	int	i;
+	ft_printf("str: %s\n", str);
+	data->source = ft_split(str, '\n');
+	if (!data->source)
+		ft_error(data, NULL);
+	ft_printf("data[0]: %s\n", data->source[0]);
+	i = 0;
+	while (data->source[i])
 	{
-		write(1, "KO", 2);
-		exit(0);
+		i++;
+	}
+	ft_printf("i: %d\n", i);
+	if (i < 1)
+		ft_error(data, NULL);
+}
+
+//checks if there is an argument input and handles the one argument case
+static int	ft_argc_check(int argc, char *argv[], t_data *data)
+{
+	if (argc < 2)
+		return (ft_error(NULL, NULL), -1);
+	else if (argc == 2)
+	{
+		ft_argvstring(argv[1], data);
+		return (0);
 	}
 	else
-		return ;
+		return (1);
 }
 
 static void	ft_dupcheck(t_data *data)
@@ -80,16 +101,17 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data)
 {
 	int	i;
 
-	ft_argc_check(argc);
+	i = 0;
 	data->arglist = malloc((argc - 1) * sizeof(int));
 	data->dup_check = malloc((argc - 1) * sizeof(int));
 	if (!data->arglist || !data->dup_check)
 		ft_error(data, NULL);
-	i = 0;
+	if (ft_argc_check(argc, argv, data) == 1)
+		data->source = argv + 1;
 	while (i <= (argc - 2))
 	{
-		data->arglist[i] = ft_atoi_strict(argv[i + 1], data);
-		data->dup_check[i] = ft_atoi_strict(argv[i + 1], data);
+		data->arglist[i] = ft_atoi_strict(data->source[i], data);
+		data->dup_check[i] = ft_atoi_strict(data->source[i], data);
 		i++;
 	}
 	ft_dupcheck(data);
