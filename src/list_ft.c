@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/20 15:56:50 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/22 12:41:09 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,18 @@ t_list	*ft_lastnode(t_list *a)
 	if (!temp)
 		return (NULL);
 	while (temp->next != NULL)
+		temp = temp->next;
+	return (temp);
+}
+
+t_list	*ft_secondlastnode(t_list *a)
+{
+	t_list	*temp;
+
+	temp = a;
+	if (!temp)
+		return (NULL);
+	while (temp->next->next != NULL)
 		temp = temp->next;
 	return (temp);
 }

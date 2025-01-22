@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/20 15:58:15 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/22 15:18:48 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,13 @@ int	main(int argc, char *argv[])
 // }
 
 // print_linked_list(a, 'a');
-// ft_sa(&a);
+// ft_printf("\n");
+// ft_ra(&a);
 // print_linked_list(a, 'a');
-// print_linked_list(b, 'b');
-// ft_pb(&a, &b);
-// ft_pb(&a, &b);
+// ft_ra(&a);
 // print_linked_list(a, 'a');
-// ft_sa(&a);
+// ft_printf("\n");
+// ft_rra(&a);
 // print_linked_list(a, 'a');
-// print_linked_list(b, 'b');
-// ft_sb(&b);
-// print_linked_list(b, 'b');
+// ft_rra(&a);
+// print_linked_list(a, 'a');
