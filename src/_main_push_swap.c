@@ -6,24 +6,25 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/22 17:23:23 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/25 13:49:16 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static void	print_linked_list(t_list *a, char c)
-{
-	t_list *current = a; // Start at the head of the list
-	write(1, &c, 1);
-	write(1, ": ", 2);
-	while (current != NULL) // Traverse the list until the end
-	{
-		ft_printf("%d -> ", current->num); // Print the data in the current node
-		current = current->next;           // Move to the next node
-	}
-	ft_printf("NULL\n"); // End of the list
-}
+// linked list print function for testing purposes
+// static void	print_linked_list(t_list *a, char c)
+// {
+// 	t_list *current = a; // Start at the head of the list
+// 	write(1, &c, 1);
+// 	write(1, ": ", 2);
+// 	while (current != NULL) // Traverse the list until the end
+// 	{
+// 		ft_printf("%d -> ", current->num); // Print the data in the current node
+// 		current = current->next;           // Move to the next node
+// 	}
+// 	ft_printf("NULL\n"); // End of the list
+// }
 
 int	main(int argc, char *argv[])
 {
@@ -41,18 +42,9 @@ int	main(int argc, char *argv[])
 		ft_node_addback(&a, ft_init_node(i, &data, a));
 		i++;
 	}
-
-print_linked_list(a, 'a');
-ft_printf("\n");
-ft_ra(&a);
-print_linked_list(a, 'a');
-ft_ra(&a);
-print_linked_list(a, 'a');
-ft_printf("\n");
-ft_rra(&a);
-print_linked_list(a, 'a');
-ft_rra(&a);
-print_linked_list(a, 'a');
+	// while (ft_checksorted(a, b) == false)
+	// {
+	// 	ft_sort(a, b);
+	// }
+	ft_free_data(&data);
 }
-
-

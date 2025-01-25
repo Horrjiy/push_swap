@@ -1,40 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   check_sorted.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 16:33:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 13:52:16 by mpoplow          ###   ########.fr       */
+/*   Created: 2025/01/25 12:55:16 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/01/25 13:21:38 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_error(t_data *data, t_list *a)
+bool	ft_checksorted(t_list *a, t_list *b)
 {
-	write(2, "Error\n", 6);
-	exit(2);
-	ft_free_data(data);
-	(void)a;
+	t_list	*temp;
+	int		i;
 
-}
-
-//frees all malloced variables from the data struct.
-void	ft_free_data(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	if (data->arglist)
-		free(data->arglist);
-	if (data->dup_check)
-		free(data->dup_check);
-	if (data->source)
+	if (!b)
 	{
-		while (data->source[i])
-			free(data->source[i++]);
-		free(data->source);
+		if (!a || a->next == NULL)
+			return (false);
+		temp = a;
+		while (temp->next != NULL)
+		{
+			i = temp->num;
+			temp = temp->next;
+			if (i > temp->num)
+				return (false);
+		}
 	}
+	else
+		return (false);
+	return (true);
 }

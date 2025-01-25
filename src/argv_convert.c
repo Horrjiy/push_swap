@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/22 18:51:05 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/25 12:55:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,6 +80,7 @@ static void	ft_dupcheck(t_data *data)
 	{
 		change = 0;
 		while (data->dup_check[++i])
+		{
 			if (data->dup_check[i - 1] < data->dup_check[i])
 			{
 				temp = data->dup_check[i];
@@ -87,6 +88,7 @@ static void	ft_dupcheck(t_data *data)
 				data->dup_check[i - 1] = temp;
 				change++;
 			}
+		}
 	}
 	i = 0;
 	while (data->dup_check[++i])

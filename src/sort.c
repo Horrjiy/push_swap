@@ -1,40 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error_free.c                                       :+:      :+:    :+:   */
+/*   sort.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/03 16:33:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 13:52:16 by mpoplow          ###   ########.fr       */
+/*   Created: 2025/01/25 13:08:25 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/01/25 13:47:01 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	ft_error(t_data *data, t_list *a)
+void ft_sort(t_list *a, t_list *b)
 {
-	write(2, "Error\n", 6);
-	exit(2);
-	ft_free_data(data);
-	(void)a;
-
-}
-
-//frees all malloced variables from the data struct.
-void	ft_free_data(t_data *data)
-{
-	int	i;
-
-	i = 0;
-	if (data->arglist)
-		free(data->arglist);
-	if (data->dup_check)
-		free(data->dup_check);
-	if (data->source)
+	if (a->num > a->next->num)
 	{
-		while (data->source[i])
-			free(data->source[i++]);
-		free(data->source);
+		ft_sa(&a);
+		ft_ra(&a);
 	}
+	else if(a->num < a->next->num)
+		ft_ra(&a);
+	(void)b;
 }

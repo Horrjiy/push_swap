@@ -1,7 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap.h                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/01/25 13:46:03 by mpoplow          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <stdbool.h>
 
 typedef struct s_list
 {
@@ -16,14 +29,21 @@ typedef struct s_data
 	char			**source;
 }					t_data;
 
+// functions
 void				ft_error(t_data *data, t_list *a);
-void				free_data(t_data *data);
+void				ft_free_data(t_data *data);
 void				ft_arg_convert(int argc, char *argv[], t_data *data);
 t_list				*ft_init_node(int i, t_data *data, t_list *a);
 int					ft_listlen(t_list *a);
 t_list				*ft_lastnode(t_list *a);
 t_list				*ft_secondlastnode(t_list *a);
 void				ft_node_addback(t_list **a, t_list *node);
+
+// algorythm functions
+void				ft_sort(t_list *a, t_list *b);
+bool				ft_checksorted(t_list *a, t_list *b);
+
+// operation functions
 void				ft_sa(t_list **a);
 void				ft_sb(t_list **b);
 void				ft_ss(t_list **a, t_list **b);
