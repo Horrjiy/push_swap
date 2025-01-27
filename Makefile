@@ -6,12 +6,13 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/01/25 13:22:57 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/01/27 14:43:14 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 
+CFLAGS	:= -Wall -Wextra -Werror -MMD
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 # 	FILES																		#
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
@@ -26,20 +27,18 @@ CFILES	:= $(addprefix src/, \
 OFILES	= $(CFILES:.c=.o)
 DFILES	= $(CFILES:.c=.d)
 
-CFLAGS	:= -Wall -Wextra -Werror -MMD
-
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 # 	RULES																		#
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 
 %.o: %.c
-	@$(CC) $(CFLAGS) -MMD -MP -c $< -o $@
+	@$(CC) $(CFLAGS) -MMD -MP -g -c $< -o $@
 
 all: $(NAME)
 
 $(NAME): $(OFILES) $(DFILES)
 	make all -C libft
-	$(CC) $(OFILES) libft/libft.a -o $(NAME)
+	$(CC) $(OFILES) libft/libft.a -o $(NAME) -fsanitize=address -g
 	@echo "\033[1;32mCREATE PROGRAM: push_swap\033[0m"
 	@mkdir -p src/O_D_FILES
 	@mv $(OFILES) $(DFILES) src/O_D_FILES

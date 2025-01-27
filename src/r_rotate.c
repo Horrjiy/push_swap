@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:01:18 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 12:15:30 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:11:20 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	ft_ra(t_list **a)
 
 	if (ft_listlen(*a) < 2)
 		return ;
-	temp = ft_lastnode(*a);
-	temp2 = *a;
-	temp->next = *a;
-	*a = (*a)->next;
-	temp2->next = NULL;
+	temp = *a;
+	*a = temp->next;
+	temp->next = NULL;
+	temp2 = ft_lastnode(*a);
+	temp2->next = temp;
 	ft_printf("ra\n");
 }
 

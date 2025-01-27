@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 13:46:03 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/27 15:26:20 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct s_data
 	int				*dup_check;
 	int				*arglist;
 	char			**source;
+	int				numbers_counts;
+	bool			split_used;
 }					t_data;
 
 // functions
@@ -40,7 +42,7 @@ t_list				*ft_secondlastnode(t_list *a);
 void				ft_node_addback(t_list **a, t_list *node);
 
 // algorythm functions
-void				ft_sort(t_list *a, t_list *b);
+void				ft_sort(t_list **a, t_list **b);
 bool				ft_checksorted(t_list *a, t_list *b);
 
 // operation functions
