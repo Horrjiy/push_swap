@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/27 14:10:56 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:25:56 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,38 +71,9 @@ static int	ft_argc_check(int argc, char *argv[], t_data *data)
 		return (1);
 }
 
-static void	ft_dupcheck(t_data *data)
-{
-	int		i;
-	char	change;
-	int		temp;
-
-	i = 0;
-	change = 1;
-	while (change > 0)
-	{
-		change = 0;
-		while (data->dup_check[++i])
-		{
-			if (data->dup_check[i - 1] < data->dup_check[i])
-			{
-				temp = data->dup_check[i];
-				data->dup_check[i] = data->dup_check[i - 1];
-				data->dup_check[i - 1] = temp;
-				change++;
-			}
-		}
-	}
-	i = 0;
-	while (data->dup_check[++i])
-		if (data->dup_check[i - 1] == data->dup_check[i])
-			ft_error(data, NULL);
-	i++;
-}
-
 void	ft_arg_convert(int argc, char *argv[], t_data *data)
 {
-	int	i;
+	int i;
 
 	i = 0;
 	if (ft_argc_check(argc, argv, data) == 1)
@@ -114,14 +85,11 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data)
 	else
 		data->split_used = true;
 	data->arglist = malloc((data->numbers_counts) * sizeof(int));
-	data->dup_check = malloc((data->numbers_counts) * sizeof(int));
-	if (!data->arglist || !data->dup_check)
+	if (!data->arglist)
 		ft_error(data, NULL);
 	while (i < data->numbers_counts)
 	{
 		data->arglist[i] = ft_atoi_strict(data->source[i], data);
-		data->dup_check[i] = ft_atoi_strict(data->source[i], data);
 		i++;
 	}
-	ft_dupcheck(data);
 }

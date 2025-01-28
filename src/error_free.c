@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:33:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/27 13:25:35 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:31:14 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ft_error(t_data *data, t_list *a)
 	write(2, "Error\n", 6);
 	exit(2);
 	ft_free_data(data);
-	(void)a;
+	free_a(&a);
 }
 
 //frees all malloced variables from the data struct.
@@ -30,11 +30,6 @@ void	ft_free_data(t_data *data)
 		free(data->arglist);
 		data->arglist = NULL;
 	}
-	if (data->dup_check)
-	{
-		free(data->dup_check);
-		data->dup_check = NULL;
-	}
 	if (data->source && data->split_used == true)
 	{
 		i = 0;
@@ -46,4 +41,17 @@ void	ft_free_data(t_data *data)
 		free(data->source);
 		data->source = NULL;
 	}
+}
+
+void	free_a(t_list **a)
+{
+	t_list	*temp;
+
+	while (*a)
+	{
+		temp = (*a)->next;
+		free(*a);
+		*a = temp;
+	}
+	*a = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/27 15:34:39 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/28 19:35:15 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,13 +43,38 @@ int	main(int argc, char *argv[])
 		ft_node_addback(&a, ft_init_node(i, &data, a));
 		i++;
 	}
+	data.op_count = 0;
+	ft_dupcheck(&data, a);
 	while (ft_checksorted(a, b) == false)
 	{
 		print_linked_list(a, 'a');
-		ft_sort(&a, &b);
+		ft_sort(&a, &b, &data);
 	}
-	ft_printf("final:");
+	ft_printf("Op_count: %d\nfinal:", data.op_count);
 	print_linked_list(a, 'a');
 	ft_free_data(&data);
 	(void)argv;
+}
+
+void	ft_dupcheck(t_data *data, t_list *a)
+{
+	t_list	*temp;
+	t_list	*temp2;
+
+	ft_printf("Checking for duplicates...\n");
+	temp = a;
+	while (temp)
+	{
+		temp2 = temp->next;
+		while (temp2)
+		{
+			if (temp->num == temp2->num)
+			{
+				ft_printf("this should be an error\n");
+				ft_error(data, a);
+			}
+			temp2 = temp2->next;
+		}
+		temp = temp->next;
+	}
 }
