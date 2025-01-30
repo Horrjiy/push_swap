@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/28 19:35:15 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/29 19:52:30 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,55 +26,40 @@ static void	print_linked_list(t_list *a, char c)
 	ft_printf("NULL\n"); // End of the list
 }
 
+//prepares everything for the sorting algorythm
+static void	ft_init_sorting(t_list **a, t_data *data)
+{
+	int	i;
+	
+	i = 1;
+	while (i < data->numbers_counts)
+	{
+		ft_node_addback(a, ft_init_node(i, data, *a));
+		i++;
+	}
+	ft_dupcheck(data, *a);
+	data->op_count = 0;
+}
+
 int	main(int argc, char *argv[])
 {
 	t_data	data;
 	t_list	*a;
 	t_list	*b;
-	int		i;
 
 	data.source = NULL;
 	ft_arg_convert(argc, argv, &data);
 	b = NULL;
 	a = ft_init_node(0, &data, NULL);
-	i = 1;
-	while (i < data.numbers_counts)
-	{
-		ft_node_addback(&a, ft_init_node(i, &data, a));
-		i++;
-	}
-	data.op_count = 0;
-	ft_dupcheck(&data, a);
+	ft_init_sorting(&a, &data);
+	print_linked_list(a, 'a');
+	print_linked_list(b, 'b');
 	while (ft_checksorted(a, b) == false)
 	{
-		print_linked_list(a, 'a');
 		ft_sort(&a, &b, &data);
 	}
 	ft_printf("Op_count: %d\nfinal:", data.op_count);
 	print_linked_list(a, 'a');
 	ft_free_data(&data);
-	(void)argv;
-}
-
-void	ft_dupcheck(t_data *data, t_list *a)
-{
-	t_list	*temp;
-	t_list	*temp2;
-
-	ft_printf("Checking for duplicates...\n");
-	temp = a;
-	while (temp)
-	{
-		temp2 = temp->next;
-		while (temp2)
-		{
-			if (temp->num == temp2->num)
-			{
-				ft_printf("this should be an error\n");
-				ft_error(data, a);
-			}
-			temp2 = temp2->next;
-		}
-		temp = temp->next;
-	}
+	ft_free_a(&a);
 }

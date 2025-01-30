@@ -6,13 +6,15 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/01/27 14:43:14 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/01/30 13:03:37 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME	:= push_swap
 
 CFLAGS	:= -Wall -Wextra -Werror -MMD
+# -fsanitize=address -g
+
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 # 	FILES																		#
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
@@ -21,7 +23,7 @@ CFILES	:= $(addprefix src/, \
 		_main_push_swap.c \
 		error_free.c \
 		argv_convert.c list_ft.c \
-		sort.c check_sorted.c \
+		find_smallest_largest.c sort.c check_sorted.c \
 		s_swap.c p_push.c r_rotate.c rr_revrotate.c )
 
 OFILES	= $(CFILES:.c=.o)
@@ -38,7 +40,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES) $(DFILES)
 	make all -C libft
-	$(CC) $(OFILES) libft/libft.a -o $(NAME) -fsanitize=address -g
+	$(CC) $(OFILES) libft/libft.a -o $(NAME)
 	@echo "\033[1;32mCREATE PROGRAM: push_swap\033[0m"
 	@mkdir -p src/O_D_FILES
 	@mv $(OFILES) $(DFILES) src/O_D_FILES

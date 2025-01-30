@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/28 19:25:56 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/29 16:12:43 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,5 +91,24 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data)
 	{
 		data->arglist[i] = ft_atoi_strict(data->source[i], data);
 		i++;
+	}
+}
+
+void	ft_dupcheck(t_data *data, t_list *a)
+{
+	t_list	*temp;
+	t_list	*temp2;
+
+	temp = a;
+	while (temp)
+	{
+		temp2 = temp->next;
+		while (temp2)
+		{
+			if (temp->num == temp2->num)
+				ft_error(data, a);
+			temp2 = temp2->next;
+		}
+		temp = temp->next;
 	}
 }
