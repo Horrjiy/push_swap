@@ -6,27 +6,15 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 14:25:13 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:44:46 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-//initializes a new node
-t_list	*ft_init_node(int i, t_data *data, t_list *a)
-{
-	t_list	*node;
 
-	node = (t_list *)malloc(sizeof(t_list));
-	if (!node)
-		ft_error(data, a);
-	node->num = data->arglist[i];
-	node->next = NULL;
-	node->target = NULL;
-	return (node);
-}
 
-//retunrs the length of the linked list
+//returns the length of the linked list
 int	ft_listlen(t_list *a)
 {
 	t_list	*temp;

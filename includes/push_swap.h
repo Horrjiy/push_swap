@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 14:33:28 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 19:02:00 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 typedef struct s_list
 {
 	int				num;
+	unsigned int	pushcost;
 	struct s_list	*next;
 	struct s_list	*target;
 }					t_list;
@@ -54,6 +55,8 @@ void				ft_turksort(t_list **a, t_list **b, t_data *data);
 bool				ft_checksorted(t_list *a, t_list *b);
 bool				ft_check_reverse_sorted(t_list *a, t_list *b);
 void				ft_spot_numbers(t_list **nd, t_data *data);
+void				ft_target_smallest(t_list **a, t_list **b);
+void				ft_target_largest(t_list **a, t_list **b);
 
 /**/
 ////	operation functions
