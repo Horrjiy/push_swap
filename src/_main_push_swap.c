@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 19:44:59 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:54:19 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,8 +63,17 @@ static void	ft_sort_main(t_list **a, t_list **b, t_data *data)
 			ft_sa(a);
 		else if (ft_listlen(*a) == 3)
 			ft_sort_3(a, b, data);
-		else if (ft_listlen(*a) >= 4)
+		else if (ft_listlen(*a) == 4)
+		{
+			ft_pb(a, b);
 			ft_turksort(a, b, data);
+		}
+		else if (ft_listlen(*a) >= 5)
+		{
+			ft_pb(a, b);
+			ft_pb(a, b);
+			ft_turksort(a, b, data);
+		}
 	}
 	print_linked_list(*a, 'a');
 }

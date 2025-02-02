@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:42:34 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 19:16:24 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 20:55:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static int	ft_smallest_number(t_list **nd)
 	int		smallest;
 
 	temp = *nd;
-	smallest = 2147483647;
+	smallest = INT_MAX;
 	while (temp)
 	{
 		if (smallest > temp->num)
@@ -31,17 +31,17 @@ static int	ft_smallest_number(t_list **nd)
 static int	ft_largest_number(t_list **nd)
 {
 	t_list	*temp;
-	int		smallest;
+	int		largest;
 
 	temp = *nd;
-	smallest = -2147483648;
+	largest = INT_MIN;
 	while (temp->next != NULL)
 	{
-		if (smallest < temp->num)
-			smallest = temp->num;
+		if (largest < temp->num)
+			largest = temp->num;
 		temp = temp->next;
 	}
-	return (smallest);
+	return (largest);
 }
 
 void	ft_spot_numbers(t_list **nd, t_data *data)

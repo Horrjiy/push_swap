@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 19:02:00 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 21:18:20 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,13 @@
 # define PUSH_SWAP_H
 
 # include "../libft/libft.h"
+# include <limits.h>
 # include <stdbool.h>
 
 typedef struct s_list
 {
 	int				num;
-	unsigned int	pushcost;
+	int				pushcost;
 	struct s_list	*next;
 	struct s_list	*target;
 }					t_list;
@@ -42,6 +43,7 @@ typedef struct s_data
 void				ft_arg_convert(int argc, char *argv[], t_data *data);
 void				ft_dupcheck(t_data *data, t_list *a);
 t_list				*ft_init_node(int i, t_data *data, t_list *a);
+int					ft_find_position(t_list *node, int i);
 int					ft_listlen(t_list *a);
 t_list				*ft_lastnode(t_list *a);
 t_list				*ft_secondlastnode(t_list *a);

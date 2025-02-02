@@ -6,13 +6,29 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 19:44:46 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 20:44:42 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
+//finds position of a node in the linked list 
+int	ft_find_position(t_list *node, int i)
+{
+	t_list	*temp;
+	int		position;
 
+	position = 0;
+	temp = node;
+	while (temp)
+	{
+		position++;
+		if (temp->num == i)
+			break ;
+		temp = temp->next;
+	}
+	return (position);
+}
 
 //returns the length of the linked list
 int	ft_listlen(t_list *a)
