@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/05 17:31:58 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 12:17:12 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:25:13 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ t_list	*ft_init_node(int i, t_data *data, t_list *a)
 		ft_error(data, a);
 	node->num = data->arglist[i];
 	node->next = NULL;
+	node->target = NULL;
 	return (node);
 }
 

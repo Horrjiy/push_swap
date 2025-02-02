@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   sort.c                                             :+:      :+:    :+:   */
+/*   sort_three.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:08:25 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/30 18:32:50 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/02 14:33:12 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,38 @@ static void	print_linked_list(t_list *a, char c)
 	ft_printf("NULL\n"); // End of the list
 }
 
-void	ft_sort(t_list **a, t_list **b, t_data *data)
+void	ft_sort_3(t_list **a, t_list **b, t_data *data)
 {
-	if (!(*a))
+	ft_spot_numbers(a, data);
+	if (data->smallest_pos == 1)
 	{
-		if (ft_check_reverse_sorted == true)
-			while (*b)
-				ft_pa(a, b);
+		ft_pb(a, b);
+		ft_sa(a);
+		ft_pa(a, b);
 	}
-	else if (*a)
+	else if (data->smallest_pos == 2)
 	{
-		ft_spot_numbers(a, data);
-		if (data->smallest_pos > (ft_listlen(*a) / 2))
-			while ((*a)->num != data->smallest_num)
-				ft_rra(a);
-		else
-			while ((*a)->num != data->smallest_num)
-				ft_ra(a);
+		ft_ra(a);
+		if (ft_checksorted(*a, *b) == true)
+			return ;
+		ft_pb(a, b);
+		ft_sa(a);
+		ft_pa(a, b);
+	}
+	else if (data->smallest_pos == 3)
+	{
+		ft_rra(a);
+		if (ft_checksorted(*a, *b) == true)
+			return ;
+		ft_pb(a, b);
+		ft_sa(a);
+		ft_pa(a, b);
 	}
 }
+
+// 1 2 3
+// 1 3 2
+// 2 1 3
+// 2 3 1
+// 3 2 1
+// 3 1 2

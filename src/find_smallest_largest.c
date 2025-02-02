@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:42:34 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/30 13:18:31 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/31 12:06:00 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static int	ft_smallest_number(t_list **nd)
 
 	temp = *nd;
 	smallest = 2147483647;
-	while (temp->next != NULL)
+	while (temp)
 	{
 		if (smallest > temp->num)
 			smallest = temp->num;

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:16 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/29 19:16:21 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/01 16:22:48 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ bool	ft_checksorted(t_list *a, t_list *b)
 
 	if (!b)
 	{
-		if (!a || a->next == NULL)
-			return (false);
+		if (a->next == NULL)
+			return(true);
 		temp = a;
 		while (temp->next != NULL)
 		{
@@ -42,10 +42,10 @@ bool	ft_check_reverse_sorted(t_list *a, t_list *b)
 
 	if (!a)
 	{
-		if (!b || b->next == NULL)
-			return (false);
+		if (b->next == NULL)
+			return(true);
 		temp = b;
-		while (temp->next != NULL)
+		while (temp->next)
 		{
 			i = temp->num;
 			temp = temp->next;

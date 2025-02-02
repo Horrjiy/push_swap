@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:01:21 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/25 12:53:58 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/31 11:41:22 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ void	ft_pa(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
-	if (!b || !(*b))
+	if (!(*b))
 		return ;
 	temp = *b;
 	*b = (*b)->next;
@@ -35,7 +35,7 @@ void	ft_pb(t_list **a, t_list **b)
 {
 	t_list	*temp;
 
-	if (!a || !(*a))
+	if (!(*a))
 		return ;
 	temp = *a;
 	*a = (*a)->next;
