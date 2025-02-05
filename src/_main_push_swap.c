@@ -6,14 +6,14 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 21:54:19 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 16:59:55 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
 // linked list print function for testing purposes
-static void	print_linked_list(t_list *a, char c)
+void	print_linked_list(t_list *a, char c)
 {
 	t_list *current = a; // Start at the head of the list
 	write(1, &c, 1);
@@ -56,7 +56,6 @@ static void	ft_makelist(t_list **a, t_data *data)
 
 static void	ft_sort_main(t_list **a, t_list **b, t_data *data)
 {
-	print_linked_list(*a, 'a');
 	if (ft_checksorted(*a, *b) == false)
 	{
 		if (ft_listlen(*a) == 2)
@@ -75,7 +74,6 @@ static void	ft_sort_main(t_list **a, t_list **b, t_data *data)
 			ft_turksort(a, b, data);
 		}
 	}
-	print_linked_list(*a, 'a');
 }
 
 int	main(int argc, char *argv[])
@@ -93,12 +91,3 @@ int	main(int argc, char *argv[])
 	ft_free_data(&data);
 	ft_free_a(&a);
 }
-
-// while (ft_checksorted(a, b) == false)
-// 	{
-// 		ft_printf("check!:");
-// 		print_linked_list(a, 'a');
-// 		ft_sort(&a, &b, &data);
-// 	}
-
-//	ft_printf("Op_count: %d\nfinal:", data.op_count);

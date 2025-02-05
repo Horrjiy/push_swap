@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 21:18:20 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 16:23:46 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,8 +57,8 @@ void				ft_turksort(t_list **a, t_list **b, t_data *data);
 bool				ft_checksorted(t_list *a, t_list *b);
 bool				ft_check_reverse_sorted(t_list *a, t_list *b);
 void				ft_spot_numbers(t_list **nd, t_data *data);
-void				ft_target_smallest(t_list **a, t_list **b);
-void				ft_target_largest(t_list **a, t_list **b);
+void				ft_target_smallest(t_list **a, t_list **b, t_data *data);
+void				ft_target_largest(t_list **a, t_list **b, t_data *data);
 
 /**/
 ////	operation functions
@@ -82,5 +82,10 @@ void				ft_rrr(t_list **a, t_list **b);
 void				ft_error(t_data *data, t_list *a);
 void				ft_free_data(t_data *data);
 void				ft_free_a(t_list **a);
+
+/**/
+////	DEBUG
+/**/
+void				print_linked_list(t_list *a, char c);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:47:11 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 21:46:48 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 16:41:59 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,42 @@ static void	target_null(t_list **a, t_list **b)
 	}
 }
 
-void	ft_target_smallest(t_list **a, t_list **b)
+static t_list *ft_maximum_position(t_list **b, t_data *data)
+{
+	t_list *temp;
+	ft_spot_numbers(b, data);
+	temp = *b;
+	while(temp)
+	{
+		if(temp->num == data->largest_num)
+			break;
+		temp = temp->next;
+	}
+	return(temp);
+}
+
+static t_list *ft_minimum_position(t_list **a, t_data *data)
+{
+	t_list *temp;
+	ft_spot_numbers(a, data);
+	temp = *a;
+	while(temp)
+	{
+		if(temp->num == data->smallest_num)
+			break;
+		temp = temp->next;
+	}
+	return(temp);
+}
+
+void	ft_target_smallest(t_list **a, t_list **b, t_data *data)
 {
 	t_list	*atemp;
 	t_list	*btemp;
 	t_list	*targettemp;
 
 	target_null(a, b);
-	atemp = *a;
+	atemp = *a; 
 	while (atemp)
 	{
 		btemp = *b;
@@ -50,14 +78,14 @@ void	ft_target_smallest(t_list **a, t_list **b)
 			btemp = btemp->next;
 		}
 		if (targettemp == NULL)
-			atemp->target = ft_lastnode(*b);
+			atemp->target = ft_maximum_position(b, data);
 		else
 			atemp->target = targettemp;
 		atemp = atemp->next;
 	}
 }
 
-void	ft_target_largest(t_list **a, t_list **b)
+void	ft_target_largest(t_list **a, t_list **b,  t_data *data)
 {
 	t_list	*atemp;
 	t_list	*btemp;
@@ -72,12 +100,12 @@ void	ft_target_largest(t_list **a, t_list **b)
 		while (atemp)
 		{
 			if (atemp->num > btemp->num)
-				if (targettemp == NULL || atemp->num > targettemp->num)
+				if (targettemp == NULL || atemp->num < targettemp->num)
 					targettemp = atemp;
 			atemp = atemp->next;
 		}
 		if (targettemp == NULL)
-			btemp->target = *a;
+			btemp->target = ft_minimum_position(a, data);
 		else
 			btemp->target = targettemp;
 		btemp = btemp->next;

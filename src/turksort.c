@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:30:24 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/02 22:16:58 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:34:59 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,47 +95,46 @@ void	ft_turksort(t_list **a, t_list **b, t_data *data)
 
 	while (ft_listlen(*a) > 3)
 	{
-		ft_target_smallest(a, b);
+		ft_target_smallest(a, b, data);
 		ft_calccost_to_b(a, b);
 		i = ft_cheapest_position(*a);
 		if (ft_listlen(*a) / 2 >= i)
 			while (i-- > 1)
 				ft_ra(a);
 		else
-			while (i-- > 1)
+			while (i++ <= ft_listlen(*a))
 				ft_rra(a);
 		i = ft_find_position(*b, (*a)->target->num);
 		if (ft_listlen(*b) / 2 >= i)
-			while (i-- > 1)
+			while (i-- != 1)
 				ft_rb(b);
 		else
-			while (i-- > 1)
+			while (i++ <= ft_listlen(*b))
 				ft_rrb(b);
 		ft_pb(a, b);
 	}
 	ft_sort_3(a, b, data);
 	while (ft_listlen(*b))
 	{
-		ft_target_largest(a, b);
+		ft_target_largest(a, b, data);
 		ft_calccost_to_a(a, b);
 		i = ft_cheapest_position(*b);
 		if (ft_listlen(*b) / 2 >= i)
 			while (i-- > 1)
 				ft_rb(b);
 		else
-			while (i-- > 1)
+			while (i++ <= ft_listlen(*b))
 				ft_rrb(b);
 		i = ft_find_position(*a, (*b)->target->num);
 		if (ft_listlen(*a) / 2 >= i)
 			while (i-- > 1)
 				ft_ra(a);
 		else
-			while (i-- > 1)
+			while (i++ <= ft_listlen(*a))
 				ft_rra(a);
 		ft_pa(a, b);
 	}
-	ft_printf("cheeeck\n");
 	ft_spot_numbers(a, data);
-	while(data->smallest_num != (*a)->num)
+	while (data->smallest_num != (*a)->num)
 		ft_rra(a);
 }
