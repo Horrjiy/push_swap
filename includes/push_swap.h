@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 16:23:46 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:39:18 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@ typedef struct s_data
 	char			**source;
 	int				numbers_counts;
 	bool			split_used;
-	int				op_count;
 	int				smallest_num;
 	int				smallest_pos;
 	int				largest_num;
@@ -83,9 +82,9 @@ void				ft_error(t_data *data, t_list *a);
 void				ft_free_data(t_data *data);
 void				ft_free_a(t_list **a);
 
-/**/
-////	DEBUG
-/**/
-void				print_linked_list(t_list *a, char c);
+// /**/
+// ////	DEBUG
+// /**/
+// void				print_linked_list(t_list *a, char c);
 
 #endif

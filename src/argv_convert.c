@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/29 16:12:43 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 17:50:54 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ static int	ft_argc_check(int argc, char *argv[], t_data *data)
 
 void	ft_arg_convert(int argc, char *argv[], t_data *data)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (ft_argc_check(argc, argv, data) == 1)
