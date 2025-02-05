@@ -6,25 +6,11 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 17:39:01 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 19:32:25 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-// // linked list print function for testing purposes
-// void	print_linked_list(t_list *a, char c)
-// {
-// 	t_list *current = a; // Start at the head of the list
-// 	write(1, &c, 1);
-// 	write(1, ": ", 2);
-// 	while (current != NULL) // Traverse the list until the end
-// 	{
-// 		ft_printf("%d -> ", current->num); // Print the data in the current node
-// 		current = current->next;           // Move to the next node
-// 	}
-// 	ft_printf("NULL\n"); // End of the list
-// }
 
 //initializes a new node
 t_list	*ft_init_node(int i, t_data *data, t_list *a)
@@ -62,11 +48,10 @@ static void	ft_sort_main(t_list **a, t_list **b, t_data *data)
 		else if (ft_listlen(*a) == 3)
 			ft_sort_3(a, b, data);
 		else if (ft_listlen(*a) == 4)
-		{
-			ft_pb(a, b);
-			ft_turksort(a, b, data);
-		}
-		else if (ft_listlen(*a) >= 5)
+			ft_sort_4(a, b, data);
+		else if (ft_listlen(*a) == 5)
+			ft_sort_5(a, b, data);
+		else if (ft_listlen(*a) >= 6)
 		{
 			ft_pb(a, b);
 			ft_pb(a, b);
@@ -90,3 +75,19 @@ int	main(int argc, char *argv[])
 	ft_free_data(&data);
 	ft_free_a(&a);
 }
+
+// // linked list print function for testing purposes
+// void	print_linked_list(t_list *a, char c)
+// {
+// 	t_list *current = a; // Start at the head of the list
+// 	write(1, &c, 1);
+// 	write(1, ": ", 2);
+// 	while (current != NULL) // Traverse the list until the end
+// 	{
+// 		ft_printf("%d -> ", current->num); // Print the data in the current node
+// 		current = current->next;           // Move to the next node
+// 	}
+// 	ft_printf("NULL\n"); // End of the list
+// }
+
+// 	system("leaks push_swap");

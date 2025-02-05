@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:42:34 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 17:50:05 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 19:35:26 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,18 +44,11 @@ static int	ft_largest_number(t_list **nd)
 	return (largest);
 }
 
-void	ft_spot_numbers(t_list **nd, t_data *data)
+static void	ft_number_positions(t_list **nd, t_data *data)
 {
 	t_list	*temp;
 	int		position;
 
-	if (!(*nd))
-		return ;
-	else
-	{
-		data->smallest_num = ft_smallest_number(nd);
-		data->largest_num = ft_largest_number(nd);
-	}
 	temp = *nd;
 	position = 1;
 	while (temp->next != NULL)
@@ -66,4 +59,26 @@ void	ft_spot_numbers(t_list **nd, t_data *data)
 		position++;
 	}
 	data->smallest_pos = position;
+	temp = *nd;
+	position = 1;
+	while (temp->next != NULL)
+	{
+		if (data->largest_num == temp->num)
+			break ;
+		temp = temp->next;
+		position++;
+	}
+	data->largest_pos = position;
+}
+
+void	ft_spot_numbers(t_list **nd, t_data *data)
+{
+	if (!(*nd))
+		return ;
+	else
+	{
+		data->smallest_num = ft_smallest_number(nd);
+		data->largest_num = ft_largest_number(nd);
+	}
+	ft_number_positions(nd, data);
 }

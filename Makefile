@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/02/02 15:07:12 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/02/05 19:12:03 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,7 +24,7 @@ CFILES	:= $(addprefix src/, \
 		error_free.c \
 		argv_convert.c list_ft.c \
 		find_smallest_largest.c check_sorted.c target.c \
-		turksort.c sort_three.c \
+		turksort.c sort_three_four.c \
 		s_swap.c p_push.c r_rotate.c rr_revrotate.c )
 
 OFILES	= $(CFILES:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 17:39:18 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/05 19:26:59 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ typedef struct s_data
 	int				smallest_num;
 	int				smallest_pos;
 	int				largest_num;
+	int				largest_pos;
 }					t_data;
 
 /**/
@@ -52,6 +53,8 @@ void				ft_node_addback(t_list **a, t_list *node);
 ////	algorythm functions
 /**/
 void				ft_sort_3(t_list **a, t_list **b, t_data *data);
+void				ft_sort_4(t_list **a, t_list **b, t_data *data);
+void				ft_sort_5(t_list **a, t_list **b, t_data *data);
 void				ft_turksort(t_list **a, t_list **b, t_data *data);
 bool				ft_checksorted(t_list *a, t_list *b);
 bool				ft_check_reverse_sorted(t_list *a, t_list *b);
