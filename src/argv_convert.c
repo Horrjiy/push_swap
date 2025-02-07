@@ -6,13 +6,13 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 17:45:14 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:52:17 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-//like ft_atoi, but nothing else than numbers and one sign are allowed.
+//like ft_atol, but nothing else than numbers and one sign are allowed.
 static int	ft_atol_strict(const char *str, t_data *data)
 {
 	int	i;
@@ -88,10 +88,10 @@ void	ft_arg_convert(int argc, char *argv[], t_data *data, t_list **a)
 		data->numbers_counts = argc - 1;
 	}
 	i = 1;
-	*a = ft_init_node(ft_atoi_strict(data->source[0], data), data, NULL);
+	*a = ft_init_node(ft_atol_strict(data->source[0], data), data, NULL);
 	while (i < data->numbers_counts)
 	{
-		ft_node_addback(a, ft_init_node(ft_atoi_strict(data->source[i], data), data, *a));
+		ft_node_addback(a, ft_init_node(ft_atol_strict(data->source[i], data), data, *a));
 		i++;
 	}
 }
