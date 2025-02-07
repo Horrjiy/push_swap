@@ -6,11 +6,11 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/28 13:28:07 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 15:29:54 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:01:38 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 static int	percentage(const char *str, va_list arglist, int i, int *wrc)
 {

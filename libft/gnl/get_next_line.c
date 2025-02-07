@@ -6,11 +6,11 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/15 18:46:37 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 15:30:33 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:02:10 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 char	*readerror(int x, char *endstr)
 {

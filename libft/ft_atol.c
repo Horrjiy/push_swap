@@ -1,25 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/09 21:31:28 by mpoplow           #+#    #+#             */
-/*   Updated: 2024/12/13 19:14:35 by mpoplow          ###   ########.fr       */
+/*   Created: 2024/10/18 20:33:43 by mpoplow           #+#    #+#             */
+/*   Updated: 2025/02/07 16:59:36 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-size_t	ft_strlen(const char *s)
+// like ft_atoi, but converts to long instead of int.
+long	ft_atol(const char *str)
 {
-	size_t	len;
+	long	i;
+	long	number;
+	long	sign;
 
-	len = 0;
-	if (s == NULL)
-		return (0);
-	while (s[len])
-		len++;
-	return (len);
+	number = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while ((str[i] >= '0' && str[i] <= '9'))
+	{
+		number = number * 10;
+		number += str[i] - '0';
+		i++;
+	}
+	return (number * sign);
 }

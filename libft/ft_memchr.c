@@ -20,14 +20,14 @@ void	*ft_memchr(const void *str, int find, size_t len)
 	while (i < len)
 	{
 		if (((unsigned char *)str)[i] == (unsigned char)find)
-			return ((unsigned char *)&str[i]);
+			return (&((unsigned char *)str)[i]);
 		i++;
 	}
 	if (i == len)
 		return (NULL);
 	if (((unsigned char *)str)[i] == '\0' && (unsigned char)find == '\0')
 	{
-		return ((unsigned char *)&str[i]);
+		return (&((unsigned char *)str)[i]);
 	}
 	return (NULL);
 }

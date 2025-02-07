@@ -6,40 +6,14 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 14:49:51 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:45:14 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-static long	ft_atol(const char *str)
-{
-	long	i;
-	long	number;
-	long	sign;
-
-	number = 0;
-	sign = 1;
-	i = 0;
-	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
-		i++;
-	if (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i] == '-')
-			sign = -1;
-		i++;
-	}
-	while ((str[i] >= '0' && str[i] <= '9'))
-	{
-		number = number * 10;
-		number += str[i] - '0';
-		i++;
-	}
-	return (number * sign);
-}
-
 //like ft_atoi, but nothing else than numbers and one sign are allowed.
-static int	ft_atoi_strict(const char *str, t_data *data)
+static int	ft_atol_strict(const char *str, t_data *data)
 {
 	int	i;
 	int	signcount;

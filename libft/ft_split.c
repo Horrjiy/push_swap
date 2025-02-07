@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/24 10:42:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/22 17:36:14 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/01/03 15:30:04 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,11 +24,11 @@ static size_t	wordcounter(char const *s, char c)
 		if (s[i] != c)
 		{
 			wordc++;
-			while (s[i] && s[i] != c)
+			while (s[i] != c && s[i])
 				i++;
+			continue ;
 		}
-		else
-			i++;
+		i++;
 	}
 	return (wordc);
 }
@@ -43,27 +43,24 @@ static size_t	wordlen(char const *s, char c)
 	return (len);
 }
 
-static char	**free_all(char **dest, size_t d1)
-{
-	while (d1 > 0)
-		free(dest[--d1]);
-	free(dest);
-	return (NULL);
-}
-
-static char	**cut(char const *s, char **dest, char c)
+static char	**cut(char const *s, char **dest, char c, size_t d1)
 {
 	size_t	si;
-	size_t	d1;
 	size_t	d2;
 
 	si = 0;
-	d1 = 0;
+	if (!dest)
+		return (NULL);
 	while (s[si])
 	{
-		dest[d1] = malloc(wordlen(s + si, c) + 1);
+		dest[d1] = malloc(wordlen((s + si), c) + 1);
 		if (!dest[d1])
-			return (free_all(dest, d1));
+		{
+			while (d1 > 0)
+				free(dest[--d1]);
+			free(dest);
+			return (NULL);
+		}
 		d2 = 0;
 		while (s[si] && s[si] != c)
 			dest[d1][d2++] = s[si++];
@@ -75,22 +72,42 @@ static char	**cut(char const *s, char **dest, char c)
 	return (dest);
 }
 
+static char	**edge(const char *s)
+{
+	char	**dest;
+
+	dest = malloc(sizeof(char *) * 2);
+	if (!dest)
+		return (NULL);
+	dest[0] = malloc(ft_strlen(s) + 1);
+	if (!dest[0])
+	{
+		free(dest);
+		return (NULL);
+	}
+	ft_strlcpy(dest[0], s, ft_strlen(s) + 1);
+	dest[1] = NULL;
+	return (dest);
+}
+
 char	**ft_split(char const *s, char c)
 {
 	char	**dest;
 	size_t	wordcount;
+	size_t	d1;
 
-	if (!s)
-		return (NULL);
+	if (s[0] == '\0')
+		return (ft_calloc(sizeof(char *), 1));
 	while (*s == c && *s != '\0')
 		s++;
+	if (c == '\0')
+		return (edge(s));
 	wordcount = wordcounter(s, c);
 	if (wordcount == 0)
 		return (ft_calloc(sizeof(char *), 1));
-	dest = malloc(sizeof(char *) * (wordcount + 1));
-	if (!dest)
-		return (NULL);
-	return (cut(s, dest, c));
+	d1 = 0;
+	dest = cut(s, malloc(sizeof(char *) * (wordcount + 1)), c, d1);
+	return (dest);
 }
 
 // #include <stdio.h>

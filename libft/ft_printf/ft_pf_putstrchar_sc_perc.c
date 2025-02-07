@@ -6,11 +6,11 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/08 14:01:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/03 15:29:51 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 17:01:49 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "../libft.h"
 
 int	cfound(char f, int *wrc)
 {
