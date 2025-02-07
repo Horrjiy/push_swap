@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 15:28:59 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 16:41:16 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void				ft_node_addback(t_list **a, t_list *node);
 /**/
 ////	algorythm functions
 /**/
-void				ft_sort_3(t_list **a, t_list **b, t_data *data);
+void				ft_sort_3(t_list **a, t_data *data);
 void				ft_sort_4(t_list **a, t_list **b, t_data *data);
 void				ft_sort_5(t_list **a, t_list **b, t_data *data);
 void				ft_turksort(t_list **a, t_list **b, t_data *data);

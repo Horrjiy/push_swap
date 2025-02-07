@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:30:24 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 17:47:51 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 16:41:42 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ static int	ft_cheapest_position(t_list *node)
 // second part of ft_turksort because of norminette
 static void	ft_turksort_back(t_list **a, t_list **b, t_data *data, int i)
 {
-	ft_sort_3(a, b, data);
+	ft_sort_3(a, data);
 	while (ft_listlen(*b))
 	{
 		ft_target_largest(a, b, data);
