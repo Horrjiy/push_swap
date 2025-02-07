@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 19:26:59 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 15:28:59 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 
 typedef struct s_list
 {
-	int				num;
+	long			num;
 	int				pushcost;
 	struct s_list	*next;
 	struct s_list	*target;
@@ -27,7 +27,6 @@ typedef struct s_list
 
 typedef struct s_data
 {
-	int				*arglist;
 	char			**source;
 	int				numbers_counts;
 	bool			split_used;
@@ -40,8 +39,8 @@ typedef struct s_data
 /**/
 ////	initialization functions
 /**/
-void				ft_arg_convert(int argc, char *argv[], t_data *data);
-void				ft_dupcheck(t_data *data, t_list *a);
+void				ft_arg_convert(int argc, char *argv[], t_data *data,
+						t_list **a);
 t_list				*ft_init_node(int i, t_data *data, t_list *a);
 int					ft_find_position(t_list *node, int i);
 int					ft_listlen(t_list *a);

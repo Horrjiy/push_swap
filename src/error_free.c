@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 16:33:36 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/29 16:08:58 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:45:34 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,6 @@ void	ft_free_data(t_data *data)
 {
 	int	i;
 
-	if (data->arglist)
-	{
-		free(data->arglist);
-		data->arglist = NULL;
-	}
 	if (data->source && data->split_used == true)
 	{
 		i = 0;

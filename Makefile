@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/02/05 19:12:03 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/02/07 15:29:21 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,24 +27,25 @@ CFILES	:= $(addprefix src/, \
 		turksort.c sort_three_four.c \
 		s_swap.c p_push.c r_rotate.c rr_revrotate.c )
 
-OFILES	= $(CFILES:.c=.o)
-DFILES	= $(CFILES:.c=.d)
+OFILES	= $(addprefix src/O_D_FILES/, $(notdir $(CFILES:.c=.o)))
+DFILES	= $(addprefix src/O_D_FILES/, $(notdir $(CFILES:.c=.d)))
 
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 # 	RULES																		#
 # *-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*	#
 
-%.o: %.c
-	@$(CC) $(CFLAGS) -MMD -MP -g -c $< -o $@
-
 all: $(NAME)
 
 $(NAME): $(OFILES) $(DFILES)
-	make all -C libft
-	$(CC) $(OFILES) libft/libft.a -o $(NAME)
+	@make all -C libft
+	@$(CC) $(OFILES) libft/libft.a -o $(NAME)
 	@echo "\033[1;32mCREATE PROGRAM: push_swap\033[0m"
-	@mkdir -p src/O_D_FILES
-	@mv $(OFILES) $(DFILES) src/O_D_FILES
+
+src/O_D_FILES/%.o: src/%.c | src/O_D_FILES
+	@$(CC) $(CFLAGS) -MMD -MP -g -c $< -o $@
+
+src/O_D_FILES:
+	@mkdir -p $@
 
 clean:
 	@echo "\033[1;33mCLEAN push_swap\033[0m"
@@ -61,5 +62,5 @@ re: clean all
 prep: fclean all
 	make clean
 
-.SILENT:
+.SILENT:  $(OFILES) $(DFILES)
 .PHONY: all clean fclean re prep

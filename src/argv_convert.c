@@ -6,17 +6,44 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/06 18:20:32 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 17:50:54 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/07 14:49:51 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+static long	ft_atol(const char *str)
+{
+	long	i;
+	long	number;
+	long	sign;
+
+	number = 0;
+	sign = 1;
+	i = 0;
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
+		i++;
+	if (str[i] == '-' || str[i] == '+')
+	{
+		if (str[i] == '-')
+			sign = -1;
+		i++;
+	}
+	while ((str[i] >= '0' && str[i] <= '9'))
+	{
+		number = number * 10;
+		number += str[i] - '0';
+		i++;
+	}
+	return (number * sign);
+}
 
 //like ft_atoi, but nothing else than numbers and one sign are allowed.
 static int	ft_atoi_strict(const char *str, t_data *data)
 {
 	int	i;
 	int	signcount;
+	long value;
 
 	i = 0;
 	signcount = 0;
@@ -34,7 +61,10 @@ static int	ft_atoi_strict(const char *str, t_data *data)
 		}
 		i++;
 	}
-	return (ft_atoi(str));
+	value = ft_atol(str);
+	if(value > INT_MAX || value < INT_MIN)
+		ft_error(data, NULL);
+	return (value);
 }
 
 //converts the one argumument case input to a **char
@@ -42,6 +72,7 @@ static void	ft_argvstring(char *str, t_data *data)
 {
 	int	i;
 
+	data->split_used = true;
 	data->source = ft_split(str, ' ');
 	if (!data->source)
 		ft_error(data, NULL);
@@ -71,44 +102,22 @@ static int	ft_argc_check(int argc, char *argv[], t_data *data)
 		return (1);
 }
 
-void	ft_arg_convert(int argc, char *argv[], t_data *data)
+void	ft_arg_convert(int argc, char *argv[], t_data *data, t_list **a)
 {
 	int	i;
 
-	i = 0;
+	
 	if (ft_argc_check(argc, argv, data) == 1)
 	{
 		data->source = argv + 1;
 		data->split_used = false;
 		data->numbers_counts = argc - 1;
 	}
-	else
-		data->split_used = true;
-	data->arglist = malloc((data->numbers_counts) * sizeof(int));
-	if (!data->arglist)
-		ft_error(data, NULL);
+	i = 1;
+	*a = ft_init_node(ft_atoi_strict(data->source[0], data), data, NULL);
 	while (i < data->numbers_counts)
 	{
-		data->arglist[i] = ft_atoi_strict(data->source[i], data);
+		ft_node_addback(a, ft_init_node(ft_atoi_strict(data->source[i], data), data, *a));
 		i++;
-	}
-}
-
-void	ft_dupcheck(t_data *data, t_list *a)
-{
-	t_list	*temp;
-	t_list	*temp2;
-
-	temp = a;
-	while (temp)
-	{
-		temp2 = temp->next;
-		while (temp2)
-		{
-			if (temp->num == temp2->num)
-				ft_error(data, a);
-			temp2 = temp2->next;
-		}
-		temp = temp->next;
 	}
 }
