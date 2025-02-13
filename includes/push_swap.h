@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 16:41:16 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/13 17:31:42 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,10 @@ typedef struct s_data
 	int				smallest_pos;
 	int				largest_num;
 	int				largest_pos;
+	int				cheap_a;
+	int				cheap_b;
+	bool			a_up;
+	bool			b_up;
 }					t_data;
 
 /**/
@@ -60,6 +64,8 @@ bool				ft_check_reverse_sorted(t_list *a, t_list *b);
 void				ft_spot_numbers(t_list **nd, t_data *data);
 void				ft_target_smallest(t_list **a, t_list **b, t_data *data);
 void				ft_target_largest(t_list **a, t_list **b, t_data *data);
+void				ft_calccost_to_b(t_list **a, t_list **b);
+void				ft_calccost_to_a(t_list **a, t_list **b);
 
 /**/
 ////	operation functions
@@ -71,8 +77,7 @@ void				ft_pa(t_list **a, t_list **b);
 void				ft_pb(t_list **a, t_list **b);
 void				ft_ra(t_list **a);
 void				ft_rb(t_list **b);
-void				ft_ss(t_list **a, t_list **b);
-void				ft_ra(t_list **a);
+void				ft_rr(t_list **a, t_list **b);
 void				ft_rra(t_list **a);
 void				ft_rrb(t_list **b);
 void				ft_rrr(t_list **a, t_list **b);
