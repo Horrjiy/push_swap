@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/29 14:42:34 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 19:35:26 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:10:32 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ static int	ft_largest_number(t_list **nd)
 
 	temp = *nd;
 	largest = INT_MIN;
-	while (temp->next != NULL)
+	while (temp)
 	{
 		if (largest < temp->num)
 			largest = temp->num;

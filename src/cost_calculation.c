@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:03:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 18:03:58 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:50:08 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,4 +64,27 @@ void	ft_calccost_to_a(t_list **a, t_list **b)
 			btemp->pushcost += (alistlen - position);
 		btemp = btemp->next;
 	}
+}
+
+int	ft_cheapest_position(t_list *node)
+{
+	t_list	*temp;
+	int		cheapest;
+
+	temp = node;
+	cheapest = INT_MAX;
+	while (temp)
+	{
+		if (cheapest > temp->pushcost)
+			cheapest = temp->pushcost;
+		temp = temp->next;
+	}
+	temp = node;
+	while (temp)
+	{
+		if (cheapest == temp->pushcost)
+			break ;
+		temp = temp->next;
+	}
+	return (ft_find_position(node, temp->num));
 }

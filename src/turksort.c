@@ -6,72 +6,40 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 14:30:24 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/14 14:39:27 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:27:55 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// linked list print function for testing purposes
-// void	print_linked_list(t_list *a, char c)
-// {
-// 	t_list *current = a; // Start at the head of the list
-// 	write(1, &c, 1);
-// 	write(1, ": ", 2);
-// 	while (current != NULL) // Traverse the list until the end
-// 	{
-// 		ft_printf("%d -> ", current->num); // Print the data in the current node
-// 		current = current->next;           // Move to the next node
-// 	}
-// 	ft_printf("NULL\n"); // End of the list
-// }
-
-// static void	printtarget(t_list **a)
-// {
-// 	t_list	*temp;
-
-// 	temp = *a;
-// 	while (temp != NULL)
-// 	{
-// 		ft_printf("Num: %d -->> %d\n", temp->num, temp->target->num);
-// 		temp = temp->next;
-// 	}
-// 	return ;
-// }
-
-static int	ft_cheapest_position(t_list *node)
+static void	ft_final_smallesttotop(t_list **a, t_data *data)
 {
-	t_list	*temp;
-	int		cheapest;
-
-	temp = node;
-	cheapest = INT_MAX;
-	while (temp)
+	ft_spot_numbers(a, data);
+	if ((ft_listlen(*a) / 2) + 1 >= data->smallest_pos)
 	{
-		if (cheapest > temp->pushcost)
-			cheapest = temp->pushcost;
-		temp = temp->next;
+		while (data->smallest_num != (*a)->num)
+			ft_ra(a);
 	}
-	temp = node;
-	while (temp)
+	else
 	{
-		if (cheapest == temp->pushcost)
-			break ;
-		temp = temp->next;
+		while (data->smallest_num != (*a)->num)
+			ft_rra(a);
 	}
-	return (ft_find_position(node, temp->num));
 }
 
 static void	ft_bringtotop_helper(t_list **a, t_list **b, t_data *data)
 {
 	if (data->a_up == true && data->b_up == true)
+	{
 		while (data->cheap_a > 1 && data->cheap_b > 1)
 		{
 			ft_rr(a, b);
 			data->cheap_a--;
 			data->cheap_b--;
 		}
+	}
 	else if (data->a_up == false && data->b_up == false)
+	{
 		while (data->cheap_a <= ft_listlen(*a)
 			&& data->cheap_b <= ft_listlen(*b))
 		{
@@ -79,6 +47,7 @@ static void	ft_bringtotop_helper(t_list **a, t_list **b, t_data *data)
 			data->cheap_a++;
 			data->cheap_b++;
 		}
+	}
 }
 
 static void	ft_bringtotop(t_list **a, t_list **b, t_data *data, bool back)
@@ -103,13 +72,12 @@ static void	ft_bringtotop(t_list **a, t_list **b, t_data *data, bool back)
 }
 
 // second part of ft_turksort because of norminette
-static void	ft_turksort_back(t_list **a, t_list **b, t_data *data, t_list *temp,
-		int i)
+static void	ft_turksort_back(t_list **a, t_list **b, t_data *data)
 {
+	t_list	*temp;
+	int		i;
+
 	ft_sort_3(a, data);
-	// ft_printf("\n\n //// ZWEITER TEIL //// \n\n");
-	// print_linked_list(*a, 'a');
-	// print_linked_list(*b, 'b');
 	while (ft_listlen(*b) != 0)
 	{
 		ft_target_largest(a, b, data);
@@ -120,26 +88,17 @@ static void	ft_turksort_back(t_list **a, t_list **b, t_data *data, t_list *temp,
 		while (++i != data->cheap_b)
 			temp = temp->next;
 		data->cheap_a = ft_find_position(*a, temp->target->num);
-		if (ft_listlen(*b) / 2 >= data->cheap_b)
+		if ((ft_listlen(*b) / 2) + 1 >= data->cheap_b)
 			data->b_up = true;
 		else
 			data->b_up = false;
-		if (ft_listlen(*a) / 2 >= data->cheap_a)
+		if ((ft_listlen(*a) / 2) + 1 >= data->cheap_a)
 			data->a_up = true;
 		else
 			data->a_up = false;
-		// ft_printf("cheap_a: %d // up: %d;   cheap_b: %d // up: %d\n",
-		// 			data->cheap_a,
-		// 			data->a_up,
-		// 			data->cheap_b,
-		// 			data->b_up);
 		ft_bringtotop(a, b, data, true);
-		// print_linked_list(*a, 'a');
-		// print_linked_list(*b, 'b');
 	}
-	ft_spot_numbers(a, data);
-	while (data->smallest_num != (*a)->num)
-		ft_rra(a);
+	ft_final_smallesttotop(a, data);
 }
 
 void	ft_turksort(t_list **a, t_list **b, t_data *data)
@@ -147,8 +106,6 @@ void	ft_turksort(t_list **a, t_list **b, t_data *data)
 	t_list	*temp;
 	int		i;
 
-	// print_linked_list(*a, 'a');
-	// print_linked_list(*b, 'b');
 	while (ft_listlen(*a) > 3)
 	{
 		ft_target_smallest(a, b, data);
@@ -159,22 +116,15 @@ void	ft_turksort(t_list **a, t_list **b, t_data *data)
 		while (++i != data->cheap_a)
 			temp = temp->next;
 		data->cheap_b = ft_find_position(*b, temp->target->num);
-		if (ft_listlen(*a) / 2 >= data->cheap_a)
+		if ((ft_listlen(*a) / 2) + 1 >= data->cheap_a)
 			data->a_up = true;
 		else
 			data->a_up = false;
-		if (ft_listlen(*b) / 2 >= data->cheap_b)
+		if ((ft_listlen(*b) / 2) + 1 >= data->cheap_b)
 			data->b_up = true;
 		else
 			data->b_up = false;
-		// ft_printf("cheap_a: %d // up: %d;   cheap_b: %d // up: %d\n",
-		// 			data->cheap_a,
-		// 			data->a_up,
-		// 			data->cheap_b,
-		// 			data->b_up);
 		ft_bringtotop(a, b, data, false);
-		// print_linked_list(*a, 'a');
-		// print_linked_list(*b, 'b');
 	}
-	ft_turksort_back(a, b, data, temp, i);
+	ft_turksort_back(a, b, data);
 }

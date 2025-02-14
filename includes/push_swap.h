@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 12:55:29 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/13 17:31:42 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 15:50:25 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,6 +66,7 @@ void				ft_target_smallest(t_list **a, t_list **b, t_data *data);
 void				ft_target_largest(t_list **a, t_list **b, t_data *data);
 void				ft_calccost_to_b(t_list **a, t_list **b);
 void				ft_calccost_to_a(t_list **a, t_list **b);
+int					ft_cheapest_position(t_list *node);
 
 /**/
 ////	operation functions

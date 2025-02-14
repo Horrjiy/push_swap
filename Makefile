@@ -6,7 +6,7 @@
 #    By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/12/04 17:14:53 by mpoplow           #+#    #+#              #
-#    Updated: 2025/02/07 18:05:36 by mpoplow          ###   ########.fr        #
+#    Updated: 2025/02/14 16:24:40 by mpoplow          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ DFILES	= $(addprefix src/O_D_FILES/, $(notdir $(CFILES:.c=.d)))
 all: $(NAME)
 
 $(NAME): $(OFILES) $(DFILES)
-	@make all -C libft
+	@make all -sC libft
 	@$(CC) $(OFILES) libft/libft.a -o $(NAME)
 	@echo "\033[1;32mCREATE PROGRAM: push_swap\033[0m"
 

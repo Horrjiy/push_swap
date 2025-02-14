@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 13:08:25 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 16:41:52 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 16:25:52 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,12 @@
 void	ft_sort_3(t_list **a, t_data *data)
 {
 	ft_spot_numbers(a, data);
-	if(data->largest_pos == 1)
+	if (data->largest_pos == 1)
 		ft_ra(a);
-	else if(data->largest_pos == 2)
+	else if (data->largest_pos == 2)
 		ft_rra(a);
-	if((*a)->num > (*a)->next->num)
-		ft_ra(a);
+	if ((*a)->num > (*a)->next->num)
+		ft_sa(a);
 }
 
 void	ft_sort_4(t_list **a, t_list **b, t_data *data)

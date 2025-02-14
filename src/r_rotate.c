@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:01:18 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/01/27 15:11:20 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 14:49:35 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,11 +38,11 @@ void	ft_rb(t_list **b)
 
 	if (ft_listlen(*b) < 2)
 		return ;
-	temp = ft_lastnode(*b);
-	temp2 = *b;
-	temp->next = *b;
-	*b = (*b)->next;
-	temp2->next = NULL;
+	temp = *b;
+	*b = temp->next;
+	temp->next = NULL;
+	temp2 = ft_lastnode(*b);
+	temp2->next = temp;
 	ft_printf("rb\n");
 }
 
@@ -56,19 +56,19 @@ void	ft_rr(t_list **a, t_list **b)
 		return ;
 	if (!(ft_listlen(*a) < 2))
 	{
-		temp = ft_lastnode(*a);
-		temp2 = *a;
-		temp->next = *a;
-		*a = (*a)->next;
-		temp2->next = NULL;
+		temp = *a;
+		*a = temp->next;
+		temp->next = NULL;
+		temp2 = ft_lastnode(*a);
+		temp2->next = temp;
 	}
 	if (!(ft_listlen(*b) < 2))
 	{
-		temp = ft_lastnode(*b);
-		temp2 = *b;
-		temp->next = *b;
-		*b = (*b)->next;
-		temp2->next = NULL;
+		temp = *b;
+		*b = temp->next;
+		temp->next = NULL;
+		temp2 = ft_lastnode(*b);
+		temp2->next = temp;
 	}
 	ft_printf("rr\n");
 }
