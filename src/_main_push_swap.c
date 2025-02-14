@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/02 17:41:19 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/07 17:51:40 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 19:43:47 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,19 +82,3 @@ int	main(int argc, char *argv[])
 	ft_free_data(&data);
 	ft_free_a(&a);
 }
-
-// linked list print function for testing purposes
-// void	print_linked_list(t_list *a, char c)
-// {
-// 	t_list *current = a; // Start at the head of the list
-// 	write(1, &c, 1);
-// 	write(1, ": ", 2);
-// 	while (current != NULL) // Traverse the list until the end
-// 	{
-// 		ft_printf("%d -> ", current->num); // Print the data in the current node
-// 		current = current->next;           // Move to the next node
-// 	}
-// 	ft_printf("NULL\n"); // End of the list
-// }
-
-// system("leaks push_swap");
