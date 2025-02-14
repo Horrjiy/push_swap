@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/03 18:02:28 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/05 12:28:21 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/14 14:21:49 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,17 +57,17 @@ void	ft_rrr(t_list **a, t_list **b)
 	if (!(ft_listlen(*b) < 2))
 	{
 		temp = ft_lastnode(*a);
-		temp2 = *a;
+		temp2 = ft_secondlastnode(*a);
 		temp->next = *a;
-		*a = (*a)->next;
+		*a = temp;
 		temp2->next = NULL;
 	}
 	if (!(ft_listlen(*b) < 2))
 	{
 		temp = ft_lastnode(*b);
-		temp2 = *b;
+		temp2 = ft_secondlastnode(*b);
 		temp->next = *b;
-		*b = (*b)->next;
+		*b = temp;
 		temp2->next = NULL;
 	}
 	ft_printf("rrr\n");
