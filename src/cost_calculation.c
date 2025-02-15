@@ -6,7 +6,7 @@
 /*   By: mpoplow <mpoplow@student.42heilbronn.de    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/07 18:03:48 by mpoplow           #+#    #+#             */
-/*   Updated: 2025/02/14 15:50:08 by mpoplow          ###   ########.fr       */
+/*   Updated: 2025/02/15 13:20:00 by mpoplow          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,12 @@ void	ft_calccost_to_b(t_list **a, t_list **b)
 	{
 		atemp->pushcost = 0;
 		position = ft_find_position(*a, atemp->num) - 1;
-		if (alistlen / 2 >= position)
+		if ((alistlen / 2) + 1 >= position)
 			atemp->pushcost += (position);
 		else
 			atemp->pushcost += (alistlen - position);
 		position = ft_find_position(*b, atemp->target->num);
-		if (blistlen / 2 >= position)
+		if ((blistlen / 2) + 1 >= position)
 			atemp->pushcost += (position);
 		else
 			atemp->pushcost += (blistlen - position);
@@ -53,12 +53,12 @@ void	ft_calccost_to_a(t_list **a, t_list **b)
 	{
 		btemp->pushcost = 0;
 		position = ft_find_position(*b, btemp->num) - 1;
-		if (blistlen / 2 >= position)
+		if ((blistlen / 2) + 1 >= position)
 			btemp->pushcost += (position);
 		else
 			btemp->pushcost += (blistlen - position);
 		position = ft_find_position(*a, btemp->target->num);
-		if (alistlen / 2 >= position)
+		if ((alistlen / 2) + 1 >= position)
 			btemp->pushcost += (position);
 		else
 			btemp->pushcost += (alistlen - position);
